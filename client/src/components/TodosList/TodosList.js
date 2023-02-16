@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import todoService from "../../utils/todoService";
 import EditTodo from "../EditTodo/EditTodo";
+import DeleteTodo from "../DeleteTodo/DeleteTodo";
 //===============================================
 
 function TodosList({ todos, setTodos }) {
@@ -9,10 +10,7 @@ function TodosList({ todos, setTodos }) {
     setTodos(allTodos);
   };
 
-  const deleteTodo = async (id) => {
-    await todoService.deleteTodo(id);
-    setTodos(todos.filter((todo) => todo.todo_id !== id));
-  };
+
 
   useEffect(() => {
     fetchTodos();
@@ -57,12 +55,7 @@ function TodosList({ todos, setTodos }) {
                       <EditTodo todo={todo} />
                     </td>
                     <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                      <button
-                        className="text-red-500 hover:text-red-700"
-                        onClick={() => deleteTodo(todo.todo_id)}
-                      >
-                        Remove
-                      </button>
+                      <DeleteTodo todo={todo} todos={todos} setTodos={setTodos}/>
                     </td>
                   </tr>
                 ))}
