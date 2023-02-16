@@ -3,6 +3,7 @@
 
 ## Todo list application
 I built this application to get a better understanding of how to build a REST API using Node, Express, and PostgreSQL.
+React/Tailwind used for the Frontend.
 
 
 ## Screenshots
@@ -19,6 +20,9 @@ I built this application to get a better understanding of how to build a REST AP
 ## Technologies Used
 
 - React
+- Tailwind CSS
+- React/icons
 - Node.js
 - Express
 - PostgreSQL
+
