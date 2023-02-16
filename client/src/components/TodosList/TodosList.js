@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 import todoService from "../../utils/todoService";
 //===============================================
 
-function TodosList() {
-  const [todos, setTodos] = useState([]);
+function TodosList({todos, setTodos}) {
 
   const fetchTodos = async () => {
     const allTodos = await todoService.getAllTodos();
@@ -17,9 +16,8 @@ function TodosList() {
 
   useEffect(() => {
     fetchTodos();
-  }, []);
+  }, [todos]);
 
-  console.log(todos, "TODOS FROM CLIENT");
 
   return (
     <div className="flex justify-center pt-10 pb-10">
@@ -49,6 +47,7 @@ function TodosList() {
                   </th>
                 </tr>
               </thead>
+
               <tbody className="divide-y divide-gray-200">
                 {todos.map((todo) => (
                   <tr key={todo.todo_id}>
@@ -68,6 +67,8 @@ function TodosList() {
                   </tr>
                 ))}
               </tbody>
+
+
             </table>
           </div>
         </div>

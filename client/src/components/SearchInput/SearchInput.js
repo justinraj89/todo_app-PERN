@@ -2,7 +2,7 @@ import { useState } from "react";
 import todoService from "../../utils/todoService";
 //===================================
 
-function SearchInput() {
+function SearchInput({ todos, setTodos }) {
   const [input, setInput] = useState("");
 
   const handleChange = (e) => {
@@ -11,8 +11,9 @@ function SearchInput() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    todoService.newTodo(input);
+    const addedTodo = todoService.newTodo(input);
     setInput("");
+    setTodos([...todos, addedTodo])
   };
 
   //--------------------------------------------
