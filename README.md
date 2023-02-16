@@ -14,6 +14,8 @@ React/Tailwind used for the Frontend.
 ![EditTodo](https://i.imgur.com/ROwTpwT.png)
 ## Delete Modal
 ![DeleteTodo](https://i.imgur.com/VoSIP6N.png)
+## Demo
+<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjVlNTJkZGM5YmI1MzBlNjA5NDBjN2U5M2RjODljOWRmOTNiNWRmZCZjdD1n/O7GGySZKDbQFSunq1V/giphy.gif" width="800" >
 
 
 
