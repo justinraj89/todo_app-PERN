@@ -28,7 +28,7 @@ function SearchInput({ todos, setTodos }) {
           onChange={handleChange}
         />
         <button
-          className="transition ease-in-out duration-300 ml-4 bg-white text-black rounded-md border-2 px-4 hover:bg-gray-100 hover:cursor-pointer hover:text-black"
+          className="transition ease-in-out duration-300 ml-4 bg-white text-black rounded-md px-4 hover:bg-zinc-400 hover:cursor-pointer hover:text-black"
           disabled={!input}
         >
           Add Task

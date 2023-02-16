@@ -34,9 +34,24 @@ const deleteTodo = async (id) => {
   }
 };
 
+//----------------------------------------------------
+
+const editTodo = async (id, editedTodo) => {
+  try {
+    const url = `http://localhost:3001/api/todos/${id}`;
+    const res = await axios.put(url, {
+      description: editedTodo
+    })
+    console.log(res, 'RES FROM SERVER')
+  } catch (err) {
+    console.error(err.message)
+  }
+}
+
 //====================
 export default {
   newTodo,
   getAllTodos,
   deleteTodo,
+  editTodo
 };

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import todoService from "../../utils/todoService";
+import EditTodo from "../EditTodo/EditTodo";
 //===============================================
 
 function TodosList({todos, setTodos}) {
@@ -25,25 +26,25 @@ function TodosList({todos, setTodos}) {
         <div className="p-1.5 w-full inline-block align-middle ">
           <div className="overflow-hidden border rounded-lg ">
             <table className="min-w-full divide-y divide-gray-200 ">
-              <thead className="bg-gray-100">
+              <thead className="bg-zinc-900">
                 <tr>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
+                    className="px-6 py-3 text-md font-bold text-left text-gray-100 uppercase "
                   >
-                    Description
+                    Task
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-xs font-bold text-right text-gray-500 uppercase "
+                    className="px-6 py-3 text-md font-bold text-right text-gray-100 uppercase "
                   >
                     Edit
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-xs font-bold text-right text-gray-500 uppercase "
+                    className="px-6 py-3 text-md font-bold text-right text-gray-100 uppercase "
                   >
-                    Delete
+                    Remove From List
                   </th>
                 </tr>
               </thead>
@@ -51,17 +52,15 @@ function TodosList({todos, setTodos}) {
               <tbody className="divide-y divide-gray-200">
                 {todos.map((todo) => (
                   <tr key={todo.todo_id}>
-                    <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
+                    <td className="px-6 py-4 text-sm font-medium text-gray-100 whitespace-nowrap">
                       {todo.description}
                     </td>
                     <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                      <button className="text-green-500 hover:text-green-700">
-                        EDIT
-                      </button>
+                      <EditTodo todo={todo} todos={todos} setTodos={setTodos}/>
                     </td>
                     <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
                       <button className="text-red-500 hover:text-red-700" onClick={() => deleteTodo(todo.todo_id)}>
-                        Delete
+                        Remove
                       </button>
                     </td>
                   </tr>
