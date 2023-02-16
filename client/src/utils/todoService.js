@@ -25,8 +25,19 @@ const getAllTodos = async () => {
 };
 //---------------------------------------------------
 
+const deleteTodo = async (id) => {
+  try {
+    const url = `http://localhost:3001/api/todos/${id}`;
+    const res = await axios.delete(url);
+    console.log("TODO DELETED SERVER");
+  } catch (err) {
+    console.error(err.message);
+  }
+};
+
 //====================
 export default {
   newTodo,
   getAllTodos,
+  deleteTodo,
 };

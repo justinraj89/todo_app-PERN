@@ -10,8 +10,9 @@ function TodosList() {
     setTodos(allTodos);
   };
 
-  const deleteTodo = async () => {
-    console.log("delete");
+  const deleteTodo = async (id) => {
+    await todoService.deleteTodo(id);
+    setTodos(todos.filter(todo => todo.todo_id !== id))
   };
 
   useEffect(() => {
@@ -21,15 +22,12 @@ function TodosList() {
   console.log(todos, "TODOS FROM CLIENT");
 
   return (
-
-    <div className="flex justify-center pt-10">
+    <div className="flex justify-center pt-10 pb-10">
       <div className="overflow-x-auto w-2/3">
         <div className="p-1.5 w-full inline-block align-middle ">
           <div className="overflow-hidden border rounded-lg ">
             <table className="min-w-full divide-y divide-gray-200 ">
-
-
-              <thead className="bg-gray-50">
+              <thead className="bg-gray-100">
                 <tr>
                   <th
                     scope="col"
@@ -51,27 +49,25 @@ function TodosList() {
                   </th>
                 </tr>
               </thead>
-
-
               <tbody className="divide-y divide-gray-200">
-                <tr>
-                  <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
-                    clean the audi
-                  </td>
-                  <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                    <button className="text-green-500 hover:text-green-700">
-                      Edit
-                    </button>
-                  </td>
-                  <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                    <button className="text-red-500 hover:text-red-700">
-                      Delete
-                    </button>
-                  </td>
-                </tr>
+                {todos.map((todo) => (
+                  <tr key={todo.todo_id}>
+                    <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
+                      {todo.description}
+                    </td>
+                    <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
+                      <button className="text-green-500 hover:text-green-700">
+                        EDIT
+                      </button>
+                    </td>
+                    <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
+                      <button className="text-red-500 hover:text-red-700" onClick={() => deleteTodo(todo.todo_id)}>
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
-
-
             </table>
           </div>
         </div>
