@@ -3,8 +3,7 @@ import todoService from "../../utils/todoService";
 import EditTodo from "../EditTodo/EditTodo";
 //===============================================
 
-function TodosList({todos, setTodos}) {
-
+function TodosList({ todos, setTodos }) {
   const fetchTodos = async () => {
     const allTodos = await todoService.getAllTodos();
     setTodos(allTodos);
@@ -12,13 +11,12 @@ function TodosList({todos, setTodos}) {
 
   const deleteTodo = async (id) => {
     await todoService.deleteTodo(id);
-    setTodos(todos.filter(todo => todo.todo_id !== id))
+    setTodos(todos.filter((todo) => todo.todo_id !== id));
   };
 
   useEffect(() => {
     fetchTodos();
   }, [todos]);
-
 
   return (
     <div className="flex justify-center pt-10 pb-10">
@@ -56,18 +54,19 @@ function TodosList({todos, setTodos}) {
                       {todo.description}
                     </td>
                     <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                      <EditTodo todo={todo} todos={todos} setTodos={setTodos}/>
+                      <EditTodo todo={todo} />
                     </td>
                     <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                      <button className="text-red-500 hover:text-red-700" onClick={() => deleteTodo(todo.todo_id)}>
+                      <button
+                        className="text-red-500 hover:text-red-700"
+                        onClick={() => deleteTodo(todo.todo_id)}
+                      >
                         Remove
                       </button>
                     </td>
                   </tr>
                 ))}
               </tbody>
-
-
             </table>
           </div>
         </div>
